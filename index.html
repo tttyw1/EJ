@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esri Leaflet Map</title>
+    <!-- 引入 Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- 引入 Esri Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css">
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- 引入 Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- 引入 Esri Leaflet JS -->
+    <script src="https://unpkg.com/esri-leaflet@2.5.3/dist/esri-leaflet.js"></script>
+
+    <script>
+        // 创建地图实例
+        var map = L.map('map').setView([0, 0], 2);
+
+        // 添加底图
+        L.esri.basemapLayer('Streets').addTo(map);
+
+        // 添加 ArcGIS Online 图层
+        var featureLayer = L.esri.featureLayer({
+            url: 'https://services3.arcgis.com/zqHx3dnSyFS5bMVS/arcgis/rest/services/PM10_2021/FeatureServer/0'
+        }).addTo(map);
+    </script>
+</body>
+</html>
